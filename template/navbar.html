@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #5c5656">
     <div class="container">
-        <a class="navbar-brand" href="#">AutoPlate</a>
+        <a class="navbar-brand" href="{% url 'home' %}">AutoPlate</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -14,19 +14,27 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Plates</a>
+                    <a class="nav-link" href="{% url 'plates' %}">Plates</a>
                 </li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bids</a>
+                        <a class="nav-link" href="{% url 'bids' %}">Bids</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link">Help</a>
+                    <a class="nav-link" href="#">Help</a>
                 </li>
+                {% if not request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login_view' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
             </ul>
             <form class="d-flex search-form" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ q }}">
                 <button class="btn" type="submit">Search</button>
             </form>
         </div>

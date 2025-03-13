@@ -1,12 +1,19 @@
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import LoginForm, RegisterForm
 from .models import Bid, AutoPlate, User
 
 
 def home(request):
+    q = request.GET.get('q', '')
     plates = AutoPlate.objects.all()
-    return render(request, 'home.html', {"plates": plates})
+
+    if q and q != "None":
+        plates = AutoPlate.objects.search(q)
+
+    data = {"plates": plates, "q": q}
+
+    return render(request, 'home.html', context=data)
 
 
 def login_view(request):
@@ -46,4 +53,21 @@ def logout_view(request):
 
 
 def bids(request):
-    pass
+    bid = Bid.objects.all()
+    return render(request, "bids/bids.html", {"bid": bid})
+
+
+def plates(request):
+    q = request.GET.get('q', '')
+    plate = AutoPlate.objects.all()
+
+    if q and q != "None":
+        plate = AutoPlate.objects.search(q)
+
+    data = {"plate": plate, "q": q}
+    return render(request, 'plates/plates.html', context=data)
+
+
+def plate_detail(request, pk):
+    plate = get_object_or_404(AutoPlate, pk=pk)
+    return render(request, 'plates/detail_plate.html', {"plate": plate})
