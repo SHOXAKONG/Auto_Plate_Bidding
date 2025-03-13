@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+    AutoPlate
+{% endblock %}
+
+{% block content %}
+    <section class="home-page">
+        <div class="container">
+            <h1 class="text-center m-3">Welcome To AutoPlate</h1>
+            <div class="row">
+                <div class="col-12 d-flex align-items-center justify-content-center gap-5">
+                    {% for plate in plates %}
+                        <div class="card" style="width: 18rem;">
+                            <h1 class="text-center m-3">0{{ plate.region_int }} | {{ plate.plate_number }}</h1>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ plate.region }}</h3>
+                                <h5 class="card-text">{{ plate.description }}</h5>
+                                <p class="cart-text">{{ plate.deadline }}</p>
+                                <p class="cart-text">${{ plate.start_price }}</p>
+                                <a href="#" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

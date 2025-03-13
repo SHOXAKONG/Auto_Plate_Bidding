@@ -1,0 +1,58 @@
+.nav-link {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: gray;
+}
+
+.navbar-brand:hover {
+    color: gray;
+}
+
+.search-form .btn {
+    color: white;
+    outline: 1px solid white;
+    transition: all 0.3s ease;
+}
+
+.search-form .btn:hover {
+    background-color: white;
+    color: gray;
+}
+
+.search-form input:focus {
+    box-shadow: 0 0 5px 5px gray;
+    border: 1px solid gray;
+}
+
+
+.login_page {
+    background: #ccc6c6;
+}
+
+.login_page .container .forma {
+    background-color: white;
+    padding: 50px;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.register_page {
+    background: #ccc6c6;
+}
+
+.register_page .register {
+    background-color: white;
+    padding: 50px;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 20px;
+}
