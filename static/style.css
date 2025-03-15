@@ -56,3 +56,10 @@
     margin: 0 auto;
     border-radius: 20px;
 }
+
+.plate_detail .container .plate {
+    width: 30%;
+    border: 10px solid black;
+    margin: 20px auto;
+    height: 80px;
+}

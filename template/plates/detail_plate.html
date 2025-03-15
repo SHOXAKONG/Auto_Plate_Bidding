@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    <section class="plate_detail">
+    <section class="plate_detail" style="height: 100vh">
         <div class="container">
             <h1 class="text-center m-3">Plate Detail</h1>
             <div class="row">
                 <div class="col-12">
-
-                    <h1>{{ plate.plate_number }}</h1>
+                    <div class="plate">
+                        <h1 class="text-center">0{{ plate.region_int }} | {{ plate.plate_number }}</h1></div>
+                    <h2 class="text-center">{{ plate.deadline }}</h2>
+                    <p class="text-center">{{ plate.description }}</p>
+                    <h3 class="text-center">${{ plate.start_price }}</h3>
+                    <a href="{% url 'bids' %}" class="btn btn-primary w-25 mx-auto d-block">Bids</a>
                 </div>
             </div>
         </div>

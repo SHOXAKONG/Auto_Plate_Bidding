@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import LoginForm, RegisterForm
 from .models import Bid, AutoPlate, User
@@ -51,7 +52,7 @@ def logout_view(request):
     logout(request)
     return redirect('login_view')
 
-
+@login_required
 def bids(request):
     bid = Bid.objects.all()
     return render(request, "bids/bids.html", {"bid": bid})
@@ -60,10 +61,8 @@ def bids(request):
 def plates(request):
     q = request.GET.get('q', '')
     plate = AutoPlate.objects.all()
-
     if q and q != "None":
         plate = AutoPlate.objects.search(q)
-
     data = {"plate": plate, "q": q}
     return render(request, 'plates/plates.html', context=data)
 
